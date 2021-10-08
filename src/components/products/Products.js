@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import useGetData from "../../hooks/useGetData";
 import DisplayGrid from "../shared/DisplayGrid";
-import Product from "./product";
+import Product from "./Product";
+import { useState } from "react";
 
 const Products = (props) => {
-  const productList = props.productSet;
+  console.log("child", props.productList);
   return (
     <DisplayGrid>
-      {productList.map((item) => {
+      {props.productList?.map((item) => {
         const productLink = props.toCategory
           ? `/category/${item.category}`
           : `/product/${item.id}`;

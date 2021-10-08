@@ -5,13 +5,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import store from "./store/index";
 import { Provider } from "react-redux";
+import ScrollIntoView from "./components/shared/ScrollIntoView";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <ScrollIntoView>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ScrollIntoView>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

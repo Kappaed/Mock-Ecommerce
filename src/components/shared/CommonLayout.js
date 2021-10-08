@@ -29,7 +29,8 @@ const Main = styled.main`
 const ShoppingContent = styled.div`
   width: 100%;
   padding-left: 20px;
-  margin-top: 20px;
+  position: relative;
+  /* margin-top: 20px; */
 `;
 
 const CommonLayout = (props) => {
@@ -40,7 +41,7 @@ const CommonLayout = (props) => {
         <SidebarTitle>Simple.</SidebarTitle>
       </StyledLink>
       <Main>
-        <Nav categorySet={props.categorySet} />
+        <Nav />
         <ShoppingContent>{props.children}</ShoppingContent>
       </Main>
       <Divider />

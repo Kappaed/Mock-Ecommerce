@@ -2,9 +2,10 @@ import DisplayGrid from "../shared/DisplayGrid";
 import CatItem from "./CatItem";
 import SectionHeading from "../shared/SectionHeading";
 import Divider from "../shared/Divider";
+import { useSelector } from "react-redux";
 
 const Categories = (props) => {
-  const allProducts = props.totalProducts;
+  const allProducts = useSelector((state) => state.products);
   const flag = new Set();
   const productFromEachCategory = allProducts.filter((product) => {
     if (flag.has(product.category)) {
@@ -16,14 +17,11 @@ const Categories = (props) => {
   });
 
   return (
-    <>
-      <SectionHeading>Allow your style to match your ambition!</SectionHeading>
-      <DisplayGrid perRow={4} gap="20px">
-        {productFromEachCategory.map((item, index) => (
-          <CatItem category={item.category} img={item.image} key={index} />
-        ))}
-      </DisplayGrid>
-    </>
+    <DisplayGrid perRow={4} gap="20px">
+      {productFromEachCategory.map((item, index) => (
+        <CatItem category={item.category} img={item.image} key={index} />
+      ))}
+    </DisplayGrid>
   );
 };
 

@@ -1,21 +1,32 @@
 import CommonLayout from "../components/shared/CommonLayout";
 import SectionHeading from "../components/shared/SectionHeading";
 import Products from "../components/products/Products";
-import useGetData from "../hooks/useGetData";
-import Categories from "../components/Categories/Categories";
-
-const API_ALL_PROD = "https://fakestoreapi.com/products";
-const CATEGORIES_API = "https://fakestoreapi.com/products/categories";
+import useFetchProductData from "../hooks/useFetchProductData";
+import Categories from "../components/categories/Categories";
+import { ProductActions } from "../store/ProductSlice";
+import { ALL_PRODUCTS } from "../components/products/productAPI";
+import { ALL_CATEGORIES } from "../components/categories/categoryAPI";
+import { useSelector } from "react-redux";
+import LoadingSpinner from "../components/shared/LoadingSpinner";
 
 const MainPage = () => {
-  const products = useGetData(API_ALL_PROD);
-  const categories = useGetData(CATEGORIES_API);
-
+  const isProductsLoading = useFetchProductData(
+    ALL_PRODUCTS,
+    ProductActions.setProducts
+  );
+  const isCategoriesLoading = useFetchProductData(
+    ALL_CATEGORIES,
+    ProductActions.setCategories
+  );
+  const productList = useSelector((state) => state.products).slice(0, 9);
   return (
-    <CommonLayout categorySet={categories}>
+    <CommonLayout>
       <SectionHeading>Featured Collection</SectionHeading>
-      <Products productSet={products.slice(0, 9)} toCategory />
-      <Categories totalProducts={products} />
+      {isProductsLoading && <LoadingSpinner />}
+      <Products toCategory productList={productList} />
+      <SectionHeading>Allow your style to match your ambition!</SectionHeading>
+      {isCategoriesLoading && <LoadingSpinner />}
+      <Categories />
     </CommonLayout>
   );
 };

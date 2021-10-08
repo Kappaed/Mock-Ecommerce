@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import NavItem from "./NavItem";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-import useGetData from "../../hooks/useGetData";
 import Divider from "../shared/Divider";
+import { useSelector } from "react-redux";
 
 const SocialLinks = styled.ul`
   display: flex;
@@ -24,22 +24,23 @@ const Wrapper = styled.nav`
   margin-bottom: 200px;
 `;
 
-const Nav = (props) => {
-  const categories = props.categorySet;
-  console.log(categories);
-
+const categories = [
+  "electronics",
+  "jewelery",
+  "men's clothing",
+  "women's clothing",
+];
+const Nav = () => {
   return (
     <Wrapper>
       <Divider />
       <ul>
         <NavItem to="/main"> Home </NavItem>
-        {categories.map((category, index) => {
-          return (
-            <li key={index}>
-              <NavItem to={`/category/${category}`}> {category} </NavItem>
-            </li>
-          );
-        })}
+        {categories.map((category, index) => (
+          <li key={index}>
+            <NavItem to={`/category/${category}`}> {category} </NavItem>
+          </li>
+        ))}
       </ul>
       <SocialLinks>
         <li>

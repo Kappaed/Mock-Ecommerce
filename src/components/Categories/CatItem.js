@@ -1,41 +1,35 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+
+const bgPos = css`
+  position: absolute;
+  content: "";
+  width: 100%;
+  background-size: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+`;
 
 const Wrapper = styled(Link)`
   position: relative;
   color: white;
-  /* font-weight: lighter; */
   font-size: 1.4rem;
   text-align: center;
   background: transparent;
   padding: 20px 40px;
-  /* padding: 5px 10px; */
   display: block;
   &:before {
-    content: "";
-    position: absolute;
     background: black;
     opacity: 0.2;
-    background-size: 100%;
     z-index: 100;
-    width: 100%;
-    /* border-radius: 8px; */
-    height: 100%;
-    top: 0;
-    left: 0;
+    ${bgPos};
   }
   &:hover:after {
-    content: "";
-    position: absolute;
     background: white;
     opacity: 0.15;
-    background-size: 100%;
     z-index: 150;
-    width: 100%;
-    /* border-radius: 8px; */
-    height: 100%;
-    top: 0;
-    left: 0;
+    ${bgPos};
   }
 `;
 

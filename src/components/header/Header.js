@@ -36,6 +36,7 @@ const Header = () => {
       <FlexWrapper>
         <InputWrapper>
           <FaSearch />
+          <label htmlFor="GlobalSearch" />
           <StyledInput
             type="text"
             placeholder="Search..."

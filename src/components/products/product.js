@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import FadeIn from "../shared/FadeIn";
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -37,11 +38,13 @@ const StyledImg = styled.img`
 `;
 const Product = (props) => {
   return (
-    <Wrapper to={props.link}>
-      <StyledImg src={props.img} alt="available product" />
-      <StyledName>{props.title}</StyledName>
-      <span>{`$${props.price}`}</span>
-    </Wrapper>
+    <FadeIn>
+      <Wrapper to={props.link}>
+        <StyledImg src={props.img} alt="available product" />
+        <StyledName>{props.title}</StyledName>
+        <span>{`$${props.price}`}</span>
+      </Wrapper>
+    </FadeIn>
   );
 };
 
