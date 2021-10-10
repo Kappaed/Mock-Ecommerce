@@ -37,12 +37,14 @@ const StyledImg = styled.img`
   object-fit: contain;
 `;
 const Product = (props) => {
+  const { productInfo: productData } = props;
+  const productLink = `/product/${productData.id}`;
   return (
     <FadeIn>
-      <Wrapper to={props.link}>
-        <StyledImg src={props.img} alt="available product" />
-        <StyledName>{props.title}</StyledName>
-        <span>{`$${props.price}`}</span>
+      <Wrapper to={productLink}>
+        <StyledImg src={productData.image} alt="available product" />
+        <StyledName>{productData.title}</StyledName>
+        <span>{`$${productData.price}`}</span>
       </Wrapper>
     </FadeIn>
   );

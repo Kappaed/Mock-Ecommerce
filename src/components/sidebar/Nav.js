@@ -2,7 +2,6 @@ import styled from "styled-components";
 import NavItem from "./NavItem";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import Divider from "../shared/Divider";
-import { useSelector } from "react-redux";
 
 const SocialLinks = styled.ul`
   display: flex;

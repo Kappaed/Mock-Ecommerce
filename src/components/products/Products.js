@@ -14,11 +14,12 @@ const Products = (props) => {
         return (
           <li key={item.id}>
             <Product
-              title={item.title}
-              img={item.image}
-              price={item.price}
-              id={item.id}
-              link={productLink}
+              productInfo={item}
+              // title={item.title}
+              // img={item.image}
+              // price={item.price}
+              // id={item.id}
+              // link={productLink}
             />
           </li>
         );

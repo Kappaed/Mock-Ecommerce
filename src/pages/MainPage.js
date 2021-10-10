@@ -18,7 +18,9 @@ const MainPage = () => {
     ALL_CATEGORIES,
     ProductActions.setCategories
   );
-  const productList = useSelector((state) => state.products).slice(0, 9);
+  const productList = useSelector(
+    (state) => state.ProductReducer.productList
+  ).slice(0, 9);
   return (
     <CommonLayout>
       <SectionHeading>Featured Collection</SectionHeading>

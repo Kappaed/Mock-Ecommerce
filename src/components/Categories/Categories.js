@@ -1,11 +1,9 @@
 import DisplayGrid from "../shared/DisplayGrid";
 import CatItem from "./CatItem";
-import SectionHeading from "../shared/SectionHeading";
-import Divider from "../shared/Divider";
 import { useSelector } from "react-redux";
 
 const Categories = (props) => {
-  const allProducts = useSelector((state) => state.products);
+  const allProducts = useSelector((state) => state.ProductReducer.productList);
   const flag = new Set();
   const productFromEachCategory = allProducts.filter((product) => {
     if (flag.has(product.category)) {

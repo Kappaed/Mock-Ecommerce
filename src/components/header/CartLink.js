@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -17,10 +18,11 @@ const StyledText = styled.span`
   margin-left: 5px;
 `;
 const CartLink = (props) => {
+  const numberOfItems = useSelector((state) => state.CartReducer.totalQuantity);
   return (
     <StyledLink to="/cart">
       <FaShoppingCart />
-      <StyledText>Cart (0)</StyledText>
+      <StyledText>{`Cart (${numberOfItems})`}</StyledText>
     </StyledLink>
   );
 };

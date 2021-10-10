@@ -4,13 +4,7 @@ import Product from "../products/Product";
 import axios from "axios";
 
 const isProductInArr = (id, arr) => {
-  let bool = false;
-  arr.forEach((prod) => {
-    if (prod.id === id) {
-      bool = true;
-    }
-  });
-  return bool;
+  return arr.some((obj) => obj.id === id);
 };
 
 const Recommended = (props) => {
@@ -40,10 +34,11 @@ const Recommended = (props) => {
       {chosenProducts.map((product) => (
         <Product
           key={product.id}
-          link={`https://fakestoreapi.com/products/${product.id}`}
-          img={product.image}
-          title={product.title}
-          price={product.price}
+          productInfo={product}
+          // link={`/product/${product.id}`}
+          // img={product.image}
+          // title={product.title}
+          // price={product.price}
         />
       ))}
     </DisplayGrid>

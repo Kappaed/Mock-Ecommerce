@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import CartPage from "./pages/CartPage";
 import CategoryPage from "./pages/CategoryPage";
+import SearchPage from "./pages/SearchPage";
 function App() {
   return (
     <>
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/product/:productID">
           <ProductPage />
+        </Route>
+        <Route path="/search/:searchInput">
+          <SearchPage />
         </Route>
       </Switch>
     </>

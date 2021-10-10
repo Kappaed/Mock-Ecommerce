@@ -10,12 +10,12 @@ const PurchaseButton = styled.button`
   padding: 10px 35px;
   margin-bottom: 15px;
   font-size: 1.1rem;
-  width: 60%;
+  width: ${(props) => (props.width ? props.width : "60%")};
   cursor: pointer;
   display: block;
   text-transform: capitalize;
   &:hover {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 `;
 

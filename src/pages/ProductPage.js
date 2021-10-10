@@ -13,6 +13,7 @@ import Recommended from "../components/purchase-info/Recommended";
 const MainWrapper = styled.div`
   display: flex;
   width: 100%;
+  margin: 100px 0;
 `;
 
 const StyledText = styled.p`
@@ -54,11 +55,7 @@ const ProductPage = () => {
             ]}
           />
           <MainWrapper>
-            <PurchaseInfo
-              image={productData?.image}
-              name={productData?.title}
-              price={productData?.price}
-            />
+            <PurchaseInfo productInfo={productData} />
           </MainWrapper>
           <SectionHeading margin="50px 0 15px 0"> Product Info </SectionHeading>
           <StyledText>

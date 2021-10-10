@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import PurchaseButton from "./PurchaseButton";
+import PurchaseButton from "../shared/PurchaseButton";
 import SocialMediaLink from "./SocialMediaLink";
 import { FaTwitter, FaFacebook, FaPinterest } from "react-icons/fa";
 import FadeIn from "../shared/FadeIn";
+import { CartActions } from "../../store/CartSlice";
+import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import AddedNotification from "./AddedNotification";
 
 const StyledColumn = styled.div`
   width: 50%;
@@ -17,7 +21,7 @@ const StyledProductName = styled.h2`
 `;
 
 const StyledImg = styled.img`
-  max-height: 470px;
+  max-height: 300px;
   object-fit: contain;
   max-width: 100%;
 `;
@@ -28,27 +32,47 @@ const StyledPrice = styled.p`
   font-weight: lighter;
 `;
 
-const LinkRow = styled.div``;
 const PurchaseInfo = (props) => {
+  const [showItemAdded, setShowItemAdded] = useState(false);
+  const [numberOfAdded, setNumberOfAdded] = useState(0);
+  const dispatch = useDispatch();
+  const addToCartHandler = () => {
+    if (props.productInfo === null) {
+      return;
+    }
+    dispatch(CartActions.addProduct(props.productInfo));
+    setShowItemAdded(true);
+    setNumberOfAdded((prevState) => prevState + 1);
+  };
+  useEffect(() => {
+    if (showItemAdded) {
+      const ID = setTimeout(() => setShowItemAdded(false), 3000);
+      return () => clearTimeout(ID);
+    }
+    return;
+  }, [showItemAdded]);
+  console.log(props.productInfo);
   return (
     <>
       <StyledColumn marginRight>
         <FadeIn>
-          <StyledImg src={props.image} alt="Main Product" />
+          <StyledImg src={props.productInfo?.image} alt="Main Product" />
         </FadeIn>
       </StyledColumn>
       <StyledColumn>
         <FadeIn>
-          <StyledProductName>{props.name}</StyledProductName>
-          <StyledPrice> {`$${props.price}`}</StyledPrice>
+          <StyledProductName>{props.productInfo?.title}</StyledProductName>
+          <StyledPrice> {`$${props.productInfo?.price}`}</StyledPrice>
         </FadeIn>
-        <PurchaseButton> Add to Cart </PurchaseButton>
-        <PurchaseButton dark> Buy it Now</PurchaseButton>
-        <LinkRow>
+        <PurchaseButton onClick={addToCartHandler}>Add to Cart</PurchaseButton>
+        <AddedNotification showNoti={showItemAdded}>
+          {`Added to the Cart! x${numberOfAdded}`}
+        </AddedNotification>
+        <div>
           <SocialMediaLink logo={<FaTwitter />} text="Share" />
           <SocialMediaLink logo={<FaFacebook />} text="Tweet" />
           <SocialMediaLink logo={<FaPinterest />} text="Pin it" />
-        </LinkRow>
+        </div>
       </StyledColumn>
     </>
   );
