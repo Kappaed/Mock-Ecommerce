@@ -12,6 +12,7 @@
 /build
 
 # misc
+.toml
 .http
 .DS_Store
 .env.local
