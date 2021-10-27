@@ -5,6 +5,8 @@ import storage from "redux-persist/lib/storage";
 import ProductReducer from "./ProductSlice";
 import CartReducer from "./CartSlice";
 import { persistStore } from "redux-persist";
+// import logger from "redux-logger";
+// import thunk from "redux-thunk";
 
 const combinedReducer = combineReducers({ ProductReducer, CartReducer });
 const persistConfig = {
@@ -14,7 +16,10 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
 
-const store = configureStore({ reducer: persistedReducer });
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [],
+});
 
 export const persistedStore = persistStore(store);
 export default store;

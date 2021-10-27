@@ -59,7 +59,7 @@ const Header = () => {
         <input type="submit" style={{ visibility: "hidden" }}></input>
         <CartLink />
       </FlexWrapper>
-      <Divider />
+      <Divider navDivider   />
     </HeaderWrapper>
   );
 };

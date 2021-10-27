@@ -30,7 +30,7 @@ const SearchPage = () => {
   }, []);
   return (
     <CommonLayout>
-      <Divider />
+      <Divider navDivider />
       <Breadcrumb
         path={[
           {

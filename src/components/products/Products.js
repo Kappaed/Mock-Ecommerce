@@ -1,12 +1,19 @@
-import styled from "styled-components";
 import DisplayGrid from "../shared/DisplayGrid";
 import Product from "./Product";
-import { useState } from "react";
+import styled from "styled-components";
+
+const ProductGrid = styled(DisplayGrid)`
+  @media (max-width: 950px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const Products = (props) => {
-  console.log("child", props.productList);
   return (
-    <DisplayGrid>
+    <ProductGrid>
       {props.productList?.map((item) => {
         const productLink = props.toCategory
           ? `/category/${item.category}`
@@ -24,7 +31,7 @@ const Products = (props) => {
           </li>
         );
       })}
-    </DisplayGrid>
+    </ProductGrid>
   );
 };
 

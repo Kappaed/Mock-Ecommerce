@@ -14,17 +14,24 @@ const StyledLink = styled(NavLink)`
   &:hover {
     opacity: var(--hover-link-opacity);
   }
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 const NavItem = (props) => {
   return (
     <>
       <ul>
-        <StyledLink to={props.to} activeClassName="selected">
+        <StyledLink
+          to={props.to}
+          activeClassName="selected"
+          onClick={props?.onLinkClick}
+        >
           {props.children}
         </StyledLink>
       </ul>
-      <Divider />
+      <Divider navDivider />
     </>
   );
 };

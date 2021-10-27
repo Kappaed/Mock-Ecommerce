@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   font-size: 0.85rem;
   font-weight: lighter;
   margin: 25px 0;
+  @media (max-width: 600px) {
+    justify-content: center;
+    font-size: 1rem;
+  }
 `;
 
 const IconWrapper = styled.div`

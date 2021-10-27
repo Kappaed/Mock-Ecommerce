@@ -5,6 +5,9 @@ const SectionHeading = styled.h2`
   font-weight: lighter;
   text-align: left;
   margin: ${(props) => (props.margin ? props.margin : "0px")};
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 export default SectionHeading;

@@ -45,7 +45,7 @@ const CartPage = () => {
   };
   return (
     <CommonLayout>
-      <Divider />
+      <Divider navDivider />
       <Breadcrumb path={[{ name: "Your Shopping Cart", link: "/" }]} />
       <SectionHeading>Shopping Cart</SectionHeading>
       {/* <p>This is the Shopping Cart Page</p> */}

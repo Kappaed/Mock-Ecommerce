@@ -14,23 +14,42 @@ const StyledList = styled.ul`
   margin-top: 20px;
 `;
 
+const StyledNav = styled.nav`
+  @media (max-width: 600px) {
+    margin: 20px 0;
+  }
+`;
+
+const StyledListItem = styled.li`
+  @media (max-width: 600px) {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+`;
+
+const FooterNavHeading = styled(SectionHeading)`
+  @media (max-width: 600px) {
+    font-size: 1.6rem;
+  }
+`;
+
 const FooterNav = () => {
   return (
     <>
-      <SectionHeading fontSize="1.2rem">Links</SectionHeading>
-      <nav>
+      <FooterNavHeading fontSize="1.2rem">Links</FooterNavHeading>
+      <StyledNav>
         <StyledList>
-          <li>
+          <StyledListItem>
             <StyledLink href="#">Our Story</StyledLink>
-          </li>
-          <li>
+          </StyledListItem>
+          <StyledListItem>
             <StyledLink href="#">News</StyledLink>
-          </li>
-          <li>
+          </StyledListItem>
+          <StyledListItem>
             <StyledLink href="#">Contact Us</StyledLink>
-          </li>
+          </StyledListItem>
         </StyledList>
-      </nav>
+      </StyledNav>
     </>
   );
 };

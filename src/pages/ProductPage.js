@@ -41,7 +41,7 @@ const ProductPage = () => {
 
   return (
     <CommonLayout>
-      <Divider />
+      <Divider navDivider />
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <>

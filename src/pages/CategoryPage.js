@@ -17,6 +17,15 @@ const ClothingHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+
+const CategoryHeader = styled(SectionHeading)`
+  @media (max-width: 600px) {
+    margin: 20px 0;
+  }
 `;
 
 const CategoryPage = () => {
@@ -36,10 +45,10 @@ const CategoryPage = () => {
   const sortedProducts = sortProducts(selectedDropdown, productsForCategory);
   return (
     <CommonLayout>
-      <Divider />
+      <Divider navDivider />
       <Breadcrumb path={[{ name: category, link: `/category/${category}` }]} />
       <ClothingHeader>
-        <SectionHeading>{category}</SectionHeading>
+        <CategoryHeader>{category}</CategoryHeader>
         <Dropdown setOption={setSelectedDropdown} selected={selectedDropdown} />
       </ClothingHeader>
       <Products productList={sortedProducts} />

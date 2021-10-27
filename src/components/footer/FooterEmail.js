@@ -9,11 +9,14 @@ const Wrapper = styled.div`
 const StyledText = styled.p`
   margin: 15px 0 10px 0;
   font-weight: lighter;
+  @media (max-width: 600px) {
+    margin: 20px 0;
+    text-align: left;
+  }
 `;
 
 const EmailWrapper = styled.form`
   display: flex;
-  align-items: center;
 `;
 
 const EmailInput = styled.input`
@@ -21,6 +24,9 @@ const EmailInput = styled.input`
   border: none;
   padding: 15px 0 15px 15px;
   width: 100%;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
@@ -34,10 +40,17 @@ const Button = styled.button`
     opacity: var(--hover-link-opacity);
   }
 `;
+
+const EmailHeading = styled(SectionHeading)`
+  @media (max-width: 600px) {
+    text-align: left;
+    margin-top: 30px;
+  }
+`;
 const FooterEmail = () => {
   return (
     <Wrapper>
-      <SectionHeading fontSize="1.2rem">Be in the know</SectionHeading>
+      <EmailHeading fontSize="1.2rem">Be in the know</EmailHeading>
       <StyledText>
         Promotions, new products and sales. Directly to your inbox.
       </StyledText>
